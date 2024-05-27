@@ -77,7 +77,7 @@ public class AdministratorController {
 	@PostMapping("/insert")
 	public String insert(@Validated InsertAdministratorForm form, BindingResult result, RedirectAttributes redirectAttributes, Model model) {
 		if (result.hasErrors()) {
-			return "redirect:/toInsert";
+			return "administrator/insert";
 		}
 		
 		Administrator administrator = new Administrator();
