@@ -80,9 +80,10 @@ public class AdministratorController {
 			return "administrator/insert";
 		}
 
+		//フォームからパスワード、確認用パスワードを取得
 		String password = form.getPassword();
 		String confPass = form.getConfPass();
-		
+		//パスワードの一致チェックを行う
 		if (!password.equals(confPass)) {
 			result.rejectValue("confPass", "error.confPass", "確認用パスワードが一致しません");
 			return "administrator/insert";
