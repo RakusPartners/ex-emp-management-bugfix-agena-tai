@@ -124,24 +124,24 @@
                     </div>
                   </div>
                 </div>
-                <!-- パスワード2 -->
+                <!-- 確認用パスワード -->
                 <div class="form-group">
                   <div class="row">
                     <div class="col-sm-12">
-                      <label for="password"> 確認用パスワード: </label>
+                      <label for="confPass"> 確認用パスワード: </label>
                       <label
-                        th:errors="*{password}"
+                        th:errors="*{confPass}"
                         class="error-messages"
                       >
                         パスワードを入力してください
                       </label>
                       <input
                         type="password"
-                        name="password2"
-                        id="password2"
+                        name="confPass"
+                        id="confPass"
                         class="form-control"
                         placeholder="password"
-                        th:field="*{password}"
+                        th:field="*{confPass}"
                         th:errorclass="error-input"
                         value="xxxxxxxx"
                       />
