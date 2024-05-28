@@ -96,6 +96,17 @@
         >
           <!-- ここから上を編集する必要はありません -->
 
+          <!-- 曖昧検索欄を追加 -->
+          <form
+              method="post"
+              action="list.html"
+              th:action="@{/employee/showList}"
+              th:object="${searchEmployeeForm}"
+            >
+            検索したい名前：<input type="text" >
+            <button>検索</button>
+          </form>
+
           <!-- ここにモックのtable要素を貼り付けます -->
 
           <table class="table table-striped">

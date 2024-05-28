@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.domain.Employee;
 import com.example.form.UpdateEmployeeForm;
@@ -52,6 +53,28 @@ public class EmployeeController {
 	public String showList(Model model) {
 		List<Employee> employeeList = employeeService.showList();
 		model.addAttribute("employeeList", employeeList);
+		return "employee/list";
+	}
+
+	/////////////////////////////////////////////////////
+	// ユースケース：従業員一覧を表示する
+	/////////////////////////////////////////////////////
+	/**
+	 * 従業員一覧画面を出力します.
+	 * 
+	 * @param model モデル
+	 * @return 従業員一覧画面
+	 */
+	@PostMapping("/showList")
+	public String showList(@RequestParam(name = "name", required = false)String name, Model model) {
+		if (name == null) {
+			List<Employee> employeeList = employeeService.showList();
+			model.addAttribute("employeeList", employeeList);
+		} else {
+			List<Employee> employeeList = employeeService.showName(name);
+			model.addAttribute("employeeList", employeeList);
+		}
+		
 		return "employee/list";
 	}
 
