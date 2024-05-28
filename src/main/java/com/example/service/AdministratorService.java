@@ -40,4 +40,12 @@ public class AdministratorService {
 		Administrator administrator = administratorRepository.findByMailAddressAndPassward(mailAddress, password);
 		return administrator;
 	}
+
+	/**
+	 * 重複チェック.
+	 */
+	public boolean doubleCheck(String mailAdrress) {
+		Administrator checkaAdmin = administratorRepository.findByMailAddress(mailAdrress);
+		return checkaAdmin != null;
+	}
 }
