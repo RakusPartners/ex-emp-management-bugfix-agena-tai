@@ -23,6 +23,10 @@ public class InsertAdministratorForm {
 	@NotBlank(message = "パスワードを入力してください")
 	private String password;
 
+	/** パスワード */
+	@NotBlank(message = "確認用パスワードを入力してください")
+	private String confPass;
+
 	public String getName() {
 		return name;
 	}
@@ -47,10 +51,18 @@ public class InsertAdministratorForm {
 		this.password = password;
 	}
 
+	public String getConfPass() {
+		return confPass;
+	}
+
+	public void setConfPass(String confPass) {
+		this.confPass = confPass;
+	}
+
 	@Override
 	public String toString() {
 		return "InsertAdministratorForm [name=" + name + ", mailAddress=" + mailAddress + ", password=" + password
-				+ "]";
+				+ ", confPass=" + confPass + "]";
 	}
 
 }

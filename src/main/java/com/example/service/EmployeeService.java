@@ -52,4 +52,16 @@ public class EmployeeService {
 	public void update(Employee employee) {
 		employeeRepository.update(employee);
 	}
+
+	/**
+	 * 従業員情報を取得します.
+	 * 
+	 * @param name 従業員名
+	 * @return 従業員情報
+	 * @throws org.springframework.dao.DataAccessException 検索されない場合は例外が発生します
+	 */
+	public List<Employee> showName(String name) {
+		List<Employee> employeeList = employeeRepository.serchName(name);
+		return employeeList;
+	}
 }

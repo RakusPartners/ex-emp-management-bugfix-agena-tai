@@ -67,7 +67,7 @@
               </li>
             </ul>
             <p class="navbar-text navbar-right">
-              <span th:text="${administratorName}">山田太郎</span
+              <span th:text="${session.name}">山田太郎</span
               >さんこんにちは！ &nbsp;&nbsp;&nbsp;
               <a
                 href="../administrator/login.html"
@@ -95,6 +95,17 @@
           class="table-responsive col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12"
         >
           <!-- ここから上を編集する必要はありません -->
+
+          <!-- 曖昧検索欄を追加 -->
+          <form
+              method="post"
+              action="list.html"
+              th:action="@{/employee/showList}"
+              th:object="${searchEmployeeForm}"
+            >
+            検索したい名前：<input type="text" >
+            <button>検索</button>
+          </form>
 
           <!-- ここにモックのtable要素を貼り付けます -->
 

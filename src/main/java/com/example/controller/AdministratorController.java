@@ -79,7 +79,16 @@ public class AdministratorController {
 		if (result.hasErrors()) {
 			return "administrator/insert";
 		}
-		
+
+		//フォームからパスワード、確認用パスワードを取得
+		String password = form.getPassword();
+		String confPass = form.getConfPass();
+		//パスワードの一致チェックを行う
+		if (!password.equals(confPass)) {
+			result.rejectValue("confPass", "error.confPass", "確認用パスワードが一致しません");
+			return "administrator/insert";
+		}
+
 		Administrator administrator = new Administrator();
 		// フォームからドメインにプロパティ値をコピー
 		BeanUtils.copyProperties(form, administrator);
@@ -121,6 +130,11 @@ public class AdministratorController {
 			redirectAttributes.addFlashAttribute("errorMessage", "メールアドレスまたはパスワードが不正です。");
 			return "redirect:/";
 		}
+
+		//ドメインからログイン者の名前を取得
+		String name = administrator.getName();
+		session.setAttribute("name", name);
+
 		return "redirect:/employee/showList";
 	}
 

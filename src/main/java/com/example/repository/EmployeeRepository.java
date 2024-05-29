@@ -83,4 +83,23 @@ public class EmployeeRepository {
 		String updateSql = "UPDATE employees SET dependents_count=:dependentsCount WHERE id=:id";
 		template.update(updateSql, param);
 	}
+
+	/**
+	 * 主キーから従業員情報を取得します.
+	 * 
+	 * @param name 検索したい従業員名
+	 * @return 検索された従業員情報
+	 * @exception org.springframework.dao.DataAccessException 従業員が存在しない場合は例外を発生します
+	 */
+	public List<Employee> serchName(String name) {
+		String sql = """
+			SELECT id,name,image,gender,hire_date,mail_address,zip_code,address,telephone,salary,characteristics,dependents_count
+			FROM employees
+			WHERE name=:name
+				""";
+
+		List<Employee> developmentList = template.query(sql, EMPLOYEE_ROW_MAPPER);
+
+		return developmentList;
+	}
 }
